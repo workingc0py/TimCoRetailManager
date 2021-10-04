@@ -32,7 +32,7 @@ namespace TRMDesktopUI.Helpers
         {
             var data = new FormUrlEncodedContent(new[]
             {
-                new KeyValuePair<string, string>("grand_type", "password"),
+                new KeyValuePair<string, string>("grant_type", "password"),
                 new KeyValuePair<string, string>("username", username),
                 new KeyValuePair<string, string>("password", password)
             });
