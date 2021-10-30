@@ -28,7 +28,7 @@
         </Grid.ColumnDefinitions>
         
         <!-- Header -->
-        <TextBlock Text="Sales Page" FontSize="30" Grid.Row="0"
+        <TextBlock Text="Sales Page" FontSize="30" Grid.Row="0" FontWeight="Light"
                    Grid.Column="0" Grid.ColumnSpan="3" Margin="0 15"/>
 
         <!-- Column 0 -->
