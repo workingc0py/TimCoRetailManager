@@ -41,7 +41,7 @@ namespace TRMDataManager.Library.DataAccess
                 details.Add(detail);
             }
 
-            
+
             SaleDBModel sale = new SaleDBModel
             {
                 SubTotal = details.Sum(x => x.PurchasePrice),
@@ -51,7 +51,7 @@ namespace TRMDataManager.Library.DataAccess
 
             sale.Total = sale.SubTotal + sale.Tax;
 
-            using(SqlDataAccess sql = new SqlDataAccess())
+            using (SqlDataAccess sql = new SqlDataAccess())
             {
                 try
                 {
@@ -75,12 +75,21 @@ namespace TRMDataManager.Library.DataAccess
 
                     sql.CommitTransaction();
                 }
-                catch 
+                catch
                 {
                     sql.RollbackTransaction();
                     throw;
                 }
             }
+        }
+
+        public List<SaleReportModel> GetSaleReport()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+
+            var output = sql.LoadData<SaleReportModel, dynamic>("dbo.spSale_SaleReport", new { }, "TRMData");
+
+            return output;
         }
     }
 }
