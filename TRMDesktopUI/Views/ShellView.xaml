@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TRMDesktopUI.Views"
         mc:Ignorable="d"
-        Title="ShellView" Height="600" Width="1000" FontSize="18">
+        Title="ShellView" Height="600" Width="1000">
     <DockPanel>
-        <Menu DockPanel.Dock="Top" FontSize="20">
+        <Menu DockPanel.Dock="Top" FontSize="16">
             <MenuItem Header="_File">
-                <MenuItem x:Name="ExitApplication" Header="E_xit" />
+                <MenuItem x:Name="ExitApplication" Header="E_xit" FontSize="14"/>
             </MenuItem>
             <MenuItem Header="_Users">
-                <MenuItem x:Name="UserManagement" Header="User _Management" />
+                <MenuItem x:Name="UserManagement" Header="User _Management" FontSize="14" />
             </MenuItem>
-            <MenuItem Header="_Account" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}">
+            <MenuItem Header="_Account" FontSize="14" Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}">
                 <MenuItem x:Name="LogOut" Header="_Log Out"/>
             </MenuItem>
         </Menu>
