@@ -20,7 +20,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build TRMApi.csproj --no-restore
       
     - name: Publish using dotnet 
       #create asp dist output folder in the project directory
