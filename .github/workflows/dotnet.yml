@@ -1,0 +1,35 @@
+name: .NET
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+      
+    - name: Publish using dotnet 
+      #create asp dist output folder in the project directory
+      run: dotnet publish -c Release --no-build -o publishoutput # Don't build again, just publish
+    - name: Publish generated asp net to Netlify
+      uses: netlify/actions/cli@master #uses Netlify Cli actions
+      env: # These are the environment variables added in GitHub Secrets for this repo
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      with:
+          args: deploy --dir=publishoutput/wwwroot --prod #push this folder to Netlify
+          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]' 
