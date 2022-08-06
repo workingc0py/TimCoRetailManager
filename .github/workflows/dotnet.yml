@@ -27,7 +27,7 @@ jobs:
       
     - name: Publish using dotnet 
       #create asp dist output folder in the project directory
-      run: dotnet publish -c Release --no-build -o publishoutput # Don't build again, just publish
+      run: dotnet publish -c Release -o publishoutput # Don't build again, just publish
     - name: Publish generated asp net to Netlify
       uses: netlify/actions/cli@master #uses Netlify Cli actions
       env: # These are the environment variables added in GitHub Secrets for this repo
