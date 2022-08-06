@@ -8,6 +8,9 @@ on:
 
 jobs:
   build:
+    defaults:
+      run:
+        working-directory: TRMApi
 
     runs-on: ubuntu-latest
 
@@ -20,7 +23,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build TRMApi.csproj --no-restore
+      run: dotnet build --no-restore
       
     - name: Publish using dotnet 
       #create asp dist output folder in the project directory
